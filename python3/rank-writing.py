@@ -32,6 +32,8 @@ Total: 0
 ```
 """
 
+
+#importing required module
 import argparse
 import re
 from subprocess import Popen, PIPE
@@ -75,6 +77,8 @@ def call(cmd, in_f=None):
     return out
 
 
+
+#creating function for Num Suggestions
 def getNumSuggestions(program, f_name):
     if program == "write-good":
         out = call(["write-good", f_name])
@@ -94,6 +98,7 @@ def getNumSuggestions(program, f_name):
         raise Exception("Unrecognized program: {}".format(program))
 
 
+#creating function for suggestion
 def getSuggestions(f_name):
     suggestions = list(map(lambda x: getNumSuggestions(x, f_name), programs))
     return (sum(suggestions), suggestions, f_name)
